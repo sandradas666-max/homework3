@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Classroom Students</title>
+	{% load static %}
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<main>
+		<h1>Classroom Students</h1>
+		<ul>
+            
+			{% for student in students %}
+				<li class="student">
+					<span><strong>{{ student.name }}</strong> <span class="grade">— Grade: {{ student.grade }}</span></span>
+					{% if student.passed %}
+						<span class="passed">Passed</span>
+					{% else %}
+						<span class="failed">Failed</span>
+					{% endif %}
+				</li>
+			{% empty %}
+				<li class="empty">No students found.</li>
+			{% endfor %}
+		</ul>
+	</main>
+</body>
+</html>
